@@ -61,7 +61,7 @@ const LandingSection = () => {
         <Box p={6} rounded="md" w="100%">
           <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4}>
-              <FormControl isInvalid={false}>
+              <FormControl isInvalid={formik.errors.firstName}>
                 <FormLabel htmlFor="firstName">Name</FormLabel>
                 <Input
                   id="firstName"
@@ -71,9 +71,9 @@ const LandingSection = () => {
                   {...formik.getFieldProps('firstName')}
                 />
                    
-                <FormErrorMessage></FormErrorMessage>
+                <FormErrorMessage> {formik.errors.firstName} </FormErrorMessage>
               </FormControl>
-              <FormControl isInvalid={false}>
+              <FormControl isInvalid={formik.errors.email}>
                 <FormLabel htmlFor="email">Email Address</FormLabel>
                 <Input
                   id="email"
@@ -84,7 +84,7 @@ const LandingSection = () => {
                   {...formik.getFieldProps('email')}
 
                 />
-                <FormErrorMessage></FormErrorMessage>
+                <FormErrorMessage> {formik.errors.email} </FormErrorMessage>
               </FormControl>
               <FormControl>
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
@@ -103,7 +103,7 @@ const LandingSection = () => {
                   <option value="other">Other</option>
                 </Select>
               </FormControl>
-              <FormControl isInvalid={false}>
+              <FormControl isInvalid={formik.errors.comment}>
                 <FormLabel htmlFor="comment">Your message</FormLabel>
                 <Textarea
                   id="comment"
@@ -114,7 +114,7 @@ const LandingSection = () => {
                   {...formik.getFieldProps('comment')}
 
                 />
-                <FormErrorMessage></FormErrorMessage>
+                <FormErrorMessage> {formik.errors.comment} </FormErrorMessage>
               </FormControl>
               <Button type="submit" onSubmit={formik.handleSubmit} colorScheme="purple" width="full">
                 Submit
